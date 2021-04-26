@@ -31,11 +31,18 @@ namespace App
         {
 
             services.AddControllers();
+            services.AddApiVersioning( Configuration => {
+                Configuration.DefaultApiVersion = new ApiVersion(1, 0);
+                Configuration.AssumeDefaultVersionWhenUnspecified = true;
+                Configuration.ReportApiVersions = true;
+            });
+      
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Banking App", Version = "v1" });
             });
           
+
             services.AddDbContext<AppDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("DbConn")));
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
         }
@@ -48,6 +55,7 @@ namespace App
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "App v1"));
+
             }
 
             app.UseRouting();
