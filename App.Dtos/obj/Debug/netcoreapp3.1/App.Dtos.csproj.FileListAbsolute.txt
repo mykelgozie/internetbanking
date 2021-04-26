@@ -1,0 +1,9 @@
+C:\Users\G-Mykel\source\repos\App\App.Dtos\bin\Debug\netcoreapp3.1\App.Dtos.deps.json
+C:\Users\G-Mykel\source\repos\App\App.Dtos\bin\Debug\netcoreapp3.1\App.Dtos.dll
+C:\Users\G-Mykel\source\repos\App\App.Dtos\bin\Debug\netcoreapp3.1\App.Dtos.pdb
+C:\Users\G-Mykel\source\repos\App\App.Dtos\obj\Debug\netcoreapp3.1\App.Dtos.csprojAssemblyReference.cache
+C:\Users\G-Mykel\source\repos\App\App.Dtos\obj\Debug\netcoreapp3.1\App.Dtos.AssemblyInfoInputs.cache
+C:\Users\G-Mykel\source\repos\App\App.Dtos\obj\Debug\netcoreapp3.1\App.Dtos.AssemblyInfo.cs
+C:\Users\G-Mykel\source\repos\App\App.Dtos\obj\Debug\netcoreapp3.1\App.Dtos.csproj.CoreCompileInputs.cache
+C:\Users\G-Mykel\source\repos\App\App.Dtos\obj\Debug\netcoreapp3.1\App.Dtos.dll
+C:\Users\G-Mykel\source\repos\App\App.Dtos\obj\Debug\netcoreapp3.1\App.Dtos.pdb

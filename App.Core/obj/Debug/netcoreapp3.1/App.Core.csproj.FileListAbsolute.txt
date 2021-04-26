@@ -1,0 +1,9 @@
+C:\Users\G-Mykel\source\repos\App\App.Core\bin\Debug\netcoreapp3.1\App.Core.deps.json
+C:\Users\G-Mykel\source\repos\App\App.Core\bin\Debug\netcoreapp3.1\App.Core.dll
+C:\Users\G-Mykel\source\repos\App\App.Core\bin\Debug\netcoreapp3.1\App.Core.pdb
+C:\Users\G-Mykel\source\repos\App\App.Core\obj\Debug\netcoreapp3.1\App.Core.csprojAssemblyReference.cache
+C:\Users\G-Mykel\source\repos\App\App.Core\obj\Debug\netcoreapp3.1\App.Core.AssemblyInfoInputs.cache
+C:\Users\G-Mykel\source\repos\App\App.Core\obj\Debug\netcoreapp3.1\App.Core.AssemblyInfo.cs
+C:\Users\G-Mykel\source\repos\App\App.Core\obj\Debug\netcoreapp3.1\App.Core.csproj.CoreCompileInputs.cache
+C:\Users\G-Mykel\source\repos\App\App.Core\obj\Debug\netcoreapp3.1\App.Core.dll
+C:\Users\G-Mykel\source\repos\App\App.Core\obj\Debug\netcoreapp3.1\App.Core.pdb
