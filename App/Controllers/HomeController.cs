@@ -67,7 +67,7 @@ namespace App.Controllers
             }
 
 
-          var result =  DateTime.UtcNow.ToString("yyyy.MM.dd");
+            var result =  DateTime.UtcNow.ToString("yyyy.MM.dd");
             var final = result + "." + version + ".0";
             return Ok(final) ;
 

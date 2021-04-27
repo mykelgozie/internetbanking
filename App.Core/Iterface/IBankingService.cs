@@ -8,7 +8,7 @@ namespace App.Core.Iterface
     public interface IBankingService
     {
 
-        public Task<string> GetApiVersion();
+        public Task<string> GetApiVersion(string path);
 
         public Task<string> CalculateMD5();
 
