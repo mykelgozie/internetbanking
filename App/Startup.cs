@@ -1,3 +1,5 @@
+using App.Core.Iterface;
+using App.Core.Services;
 using App.Data;
 using App.Models;
 using Microsoft.AspNetCore.Builder;
@@ -36,6 +38,7 @@ namespace App
                 Configuration.AssumeDefaultVersionWhenUnspecified = true;
                 Configuration.ReportApiVersions = true;
             });
+            services.AddScoped<IBankingService, BankingService>();
       
             services.AddSwaggerGen(c =>
             {

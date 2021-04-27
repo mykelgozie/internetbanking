@@ -9,9 +9,9 @@ namespace App.Core.Services
 {
     public class BankingService : IBankingService
     {
-        public async Task<string> CalculateMD5()
+        public async Task<string> CalculateMD5(string data)
         {
-            var word = "test-string-1";
+            var word = data;
             using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
             {
                 byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(word);
@@ -47,10 +47,10 @@ namespace App.Core.Services
             return final;
         }
 
-        public async Task<bool> IsPasswordStrong()
+        public async Task<bool> IsPasswordStrong(string password)
         {
-
-            throw new NotImplementedException(); var pass = "Pa$$word1";
+            //  var pass = "Pa$$word1";
+             var pass = password;
 
             if (string.IsNullOrWhiteSpace(pass))
             {

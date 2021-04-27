@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using App.Core.Iterface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,6 +18,13 @@ namespace App.Controllers
     [ApiVersion("2.0")]
     public class HomeController : ControllerBase
     {
+        private IBankingService _bankingService;
+
+        public HomeController(IBankingService bankingService)
+        {
+            _bankingService = bankingService;
+
+        }
 
         [Route("bank/v{version:apiVersion}/api/version")]
         [HttpGet]
@@ -24,22 +32,8 @@ namespace App.Controllers
         {
 
             var path = Request.Path.Value;
-           var arrayPath = path.Split('/');
-            var a = 1;
-            var version = "";
-            foreach (var item in  arrayPath) 
-            {
-                
-                if (item.Length > 1 &&  item[0].ToString() == "v" && int.TryParse(item[1].ToString(), out a))
-                {
-
-                    version = item[1].ToString();
-                    break;
-                    
-                }
-
-            }
-            return Ok(version);
+            var dateVersion = await _bankingService.GetApiVersion(path);
+            return Ok(dateVersion);
 
         }
 
@@ -50,81 +44,57 @@ namespace App.Controllers
         public async Task<IActionResult> GetApiVersion2()
         {
             var path = Request.Path.Value;
-            var arrayPath = path.Split('/');
-            var a = 1;
-            var version = "";
-            foreach (var item in arrayPath)
-            {
-
-                if (item.Length > 1 && item[0].ToString() == "v" && int.TryParse(item[1].ToString(), out a))
-                {
-
-                    version = item[1].ToString();
-                    break;
-
-                }
-
-            }
-
-
-            var result =  DateTime.UtcNow.ToString("yyyy.MM.dd");
-            var final = result + "." + version + ".0";
-            return Ok(final) ;
-
+            var dateVersion = await _bankingService.GetApiVersion(path);
+            return Ok(dateVersion);
 
         }
 
-        [Route("bank/{version:apiVersion}/api/calc/MD5")]
+        [Route("bank/{version:apiVersion}/api/calc/MD5/{data}")]
         [HttpGet]
-        public async Task<IActionResult> CalculateMD51()
+        public async Task<IActionResult> CalculateMD51(string data)
         {
-            var word = "test-string-1";
-            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
-            {
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(word);
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
-
-            
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < hashBytes.Length; i++)
-                {
-                    sb.Append(hashBytes[i].ToString("X2"));
-                }
-                return  Ok(sb.ToString());
-            }
+            var md5Hex = await _bankingService.CalculateMD5(data);
+            return Ok(md5Hex);
         
         }
 
+
+
+        [Route("bank/{version:apiVersion}/api/calc/{data}/MD5")]
         [HttpGet]
-        [Route("bank/api/password/strong")]
-        public async Task<IActionResult> IsPasswordStrong()
+        public async Task<IActionResult> CalculateMD52(string data)
         {
-            var pass = "Pa$$word1";
-
-            if (string.IsNullOrWhiteSpace(pass))
-            {
-                return Ok("Password should not be empty");
-            }
-
-            var hasSpace = pass.Contains(" "); ;
-            var hasNumber = new Regex(@"[0-9]+");
-            var hasUpperChar = new Regex(@"[A-Z]+");
-            var hasMiniChars = new Regex(@".{8,}");
-            var hasLowerChar = new Regex(@"[a-z]+");
-            var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
-
-            if (hasNumber.IsMatch(pass) && hasUpperChar.IsMatch(pass) && hasMiniChars.IsMatch(pass)
-                && hasLowerChar.IsMatch(pass) && hasSymbols.IsMatch(pass)  && !hasSpace)
-            {
-
-                return Ok("good");
-            }
-
-
-
-            return BadRequest();
+            var md5Hex = await _bankingService.CalculateMD5(data);
+            return Ok(md5Hex);
 
         }
+
+
+        [HttpGet]
+        [Route("bank/v{version:apiVersion}/api/password/strong/{password}")]
+        public async Task<IActionResult> IsPasswordStrong1(string password)
+        {
+            var isValidPassword = await _bankingService.IsPasswordStrong(password);
+            if (isValidPassword)
+            {
+                return Ok("Password is valid");
+            }
+            return BadRequest("Invalid Password");
+        }
+
+
+        [HttpGet]
+        [Route("bank/v{version:apiVersion}/api/is-password-strong/{password}")]
+        public async Task<IActionResult> IsPasswordStrong2(string password)
+        {
+            var isValidPassword = await _bankingService.IsPasswordStrong(password);
+            if (isValidPassword)
+            {
+                return Ok("Password is valid");
+            }
+            return BadRequest("Invalid Password");
+        }
+
 
 
     }

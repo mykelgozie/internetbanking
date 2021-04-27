@@ -10,8 +10,8 @@ namespace App.Core.Iterface
 
         public Task<string> GetApiVersion(string path);
 
-        public Task<string> CalculateMD5();
+        public Task<string> CalculateMD5(string data);
 
-        public Task<Boolean> IsPasswordStrong();
+        public Task<Boolean> IsPasswordStrong(string password);
     }
 }

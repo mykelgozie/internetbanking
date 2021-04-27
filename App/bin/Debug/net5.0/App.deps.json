@@ -25,6 +25,7 @@
     ".NETCoreApp,Version=v5.0": {
       "App/1.0.0": {
         "dependencies": {
+          "App.Core": "1.0.0",
           "App.Data": "1.0.0",
           "App.Models": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Versioning": "5.0.0",
@@ -1469,6 +1470,14 @@
           "System.Text.Encoding": "4.3.0",
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0"
+        }
+      },
+      "App.Core/1.0.0": {
+        "runtime": {
+          "App.Core.dll": {}
+        },
+        "compile": {
+          "App.Core.dll": {}
         }
       },
       "App.Data/1.0.0": {
@@ -3975,6 +3984,11 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "App.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "App.Data/1.0.0": {
       "type": "project",
